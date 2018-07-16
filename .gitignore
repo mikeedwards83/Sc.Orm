@@ -1,0 +1,5 @@
+/Sc.Orm/packages/
+*.user
+/Sc.Orm/.vs/
+/Sc.Orm/Sc.Orm/bin/
+/Sc.Orm/Sc.Orm/obj/
