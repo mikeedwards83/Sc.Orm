@@ -1,0 +1,44 @@
+﻿@using Glass.Mapper.Sc.Web.Mvc
+@using Sc.Orm.Components.SynthesisExample.Models.UserDefined
+@using Sitecore.Data.Items
+@using Sitecore.Links
+@using Sitecore.Mvc
+@model Sitecore.Data.Items.Item
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <a class="navbar-brand" href="@LinkManager.GetItemUrl(Model)">@Html.Sitecore().Field("Title", Model)</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        @foreach (Item child in Model.Children)
+        {
+            <ul class="navbar-nav mr-auto">
+                @if (child.Children.Any())
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @Html.Sitecore().Field("Title", child)
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @foreach (Item childChild in child.Children)
+                            {
+                                <a class="dropdown-item" href="@LinkManager.GetItemUrl(childChild)">@Html.Sitecore().Field("Title", childChild)</a>
+                            }
+                        </div>
+
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="@LinkManager.GetItemUrl(child)">@Html.Sitecore().Field("Title", child)</a>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</nav>

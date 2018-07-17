@@ -1,0 +1,40 @@
+﻿@using Glass.Mapper.Sc.Web.Mvc
+@model Sc.Orm.Components.GlassExample.Models.Navigation
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <a class="navbar-brand" href="@Model.Url">@Html.Glass().Editable(Model, x => x.Title)</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        @foreach (var child in Model.Children)
+        {
+            <ul class="navbar-nav mr-auto">
+                @if (child.Children.Any())
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @Html.Glass().Editable(child, x=>x.Title)
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @foreach (var childChild in child.Children)
+                            {
+                                <a class="dropdown-item" href="@childChild.Url">@Html.Glass().Editable(childChild,x=>x.Title)</a>
+                            }
+                        </div>
+
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="@child.Url">@Html.Glass().Editable(child, x => x.Title)</a>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</nav>

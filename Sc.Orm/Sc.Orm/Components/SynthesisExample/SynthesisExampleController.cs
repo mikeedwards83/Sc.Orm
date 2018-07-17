@@ -1,12 +1,13 @@
 ﻿using System.Diagnostics;
 using System.Web.Mvc;
-using Sc.Orm.Components.SitecoreExample.Models;
-using Sitecore.Mvc.Helpers;
+using Sc.Orm.Components.SynthesisExample.Models;
+using Sc.Orm.Components.SynthesisExample.Models.UserDefined;
 using Sitecore.Mvc.Presentation;
+using Synthesis;
 
-namespace Sc.Orm.Components.SitecoreExample
+namespace Sc.Orm.Components.SynthesisExample
 {
-    public class SitecoreExampleController : Controller
+    public class SynthesisExampleController : Controller
     {
         public ActionResult New()
         {
@@ -15,12 +16,12 @@ namespace Sc.Orm.Components.SitecoreExample
 
             for (int i = 0; i < 1000; i++)
             {
-                var temp = Sitecore.Context.Item;
+                var temp = Sitecore.Context.Item.As<IPageItem>();
             }
 
             watch.Stop();
 
-            var view = new SitecoreExampleIndexView();
+            var view = new SynthesisExampleIndexView();
             view.Watch = watch;
             view.Title = "New";
             return View("Index", view);
@@ -30,24 +31,23 @@ namespace Sc.Orm.Components.SitecoreExample
         public ActionResult RenderFields()
         {
 
-            var helper = new SitecoreHelper(new HtmlHelper(new ViewContext(), new ViewDataContainer(this.ViewData)));
 
             var watch = Stopwatch.StartNew();
             for (int i = 0; i < 1000; i++)
             {
-                var temp = Sitecore.Context.Item;
+                var temp = Sitecore.Context.Item.As<IPageItem>();
 
-                var r1 = helper.Field("SingleLineText", temp);
-                var r2 = helper.Field("RichText", temp);
-                var r3 = helper.Field("Image", temp);
-                var r11 = helper.Field("SingleLineText", temp);
-                var r22 = helper.Field("RichText", temp);
-                var r33 = helper.Field("Image", temp);
+                var r1 = temp.SingleLineText.RenderedValue; 
+                var r2 = temp.RichText.RenderedValue; 
+                var r3 = temp.Image.RenderedValue;
+                var r11 = temp.SingleLineText.RenderedValue; 
+                var r22 = temp.RichText.RenderedValue;
+                var r33 = temp.Image.RenderedValue;
             }
 
             watch.Stop();
 
-            var view = new SitecoreExampleIndexView();
+            var view = new SynthesisExampleIndexView();
             view.Watch = watch;
             view.Title = "RenderFields";
             return View("Index", view);
@@ -58,7 +58,7 @@ namespace Sc.Orm.Components.SitecoreExample
             var watch = Stopwatch.StartNew();
             for (int i = 0; i < 1000; i++)
             {
-                var temp = Sitecore.Context.Item;
+                var temp = Sitecore.Context.Item.As<IPageWithChildrenItem>();
 
                 foreach (var child in temp.Children)
                 {
@@ -68,7 +68,7 @@ namespace Sc.Orm.Components.SitecoreExample
 
             watch.Stop();
 
-            var view = new SitecoreExampleIndexView();
+            var view = new SynthesisExampleIndexView();
             view.Watch = watch;
             view.Title = "Children";
             return View("Index", view);
@@ -76,23 +76,25 @@ namespace Sc.Orm.Components.SitecoreExample
 
         public ActionResult ChildrenWithFields()
         {
-            var helper = new SitecoreHelper(new HtmlHelper(new ViewContext(), new ViewDataContainer(this.ViewData)));
 
             var watch = Stopwatch.StartNew();
             for (int i = 0; i < 1000; i++)
             {
-                var temp = Sitecore.Context.Item;
+                var temp = Sitecore.Context.Item.As<IPageWithChildrenItem>();
+
 
                 foreach (var child in temp.Children)
                 {
-                    var r1 = helper.Field("SingleLineText", child);
-                    var r3 = helper.Field("Image", child);
+                    var cast = child as IPageItem;
+
+                    var r1 = cast.SingleLineText.RenderedValue;
+                    var r3 = cast.Image.RenderedValue;
                 }
             }
 
             watch.Stop();
 
-            var view = new SitecoreExampleIndexView();
+            var view = new SynthesisExampleIndexView();
             view.Watch = watch;
             view.Title = "ChildrenWithFields";
             return View("Index", view);
@@ -102,7 +104,7 @@ namespace Sc.Orm.Components.SitecoreExample
         {
             var item = Sitecore.Context.Database.GetItem("/sitecore/content/home");
 
-            return View(item);
+            return View(item.As<INavigationItem>());
         }
     }
 }

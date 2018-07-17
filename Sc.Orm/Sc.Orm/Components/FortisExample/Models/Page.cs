@@ -6,8 +6,9 @@ using Sitecore.Data.Items;
 namespace Sc.Orm.Components.FortisExample.Models
 {
     [TemplateMapping("{FCF2D2CC-321A-4AF1-B6A9-3ECE7474BB0B}", "InterfaceMap")]
-    public partial interface IPage : IItemWrapper
+    public partial interface IPage : IItemWrapper, INavigation
     {
+        ITextFieldWrapper Title { get; }
         ITextFieldWrapper SingleLineText { get; }
         IRichTextFieldWrapper RichText { get; }
         IImageFieldWrapper Image { get; }
@@ -21,6 +22,10 @@ namespace Sc.Orm.Components.FortisExample.Models
             : base(item, spawnProvider)
         { }
 
+        public ITextFieldWrapper Title
+        {
+            get { return GetField<TextFieldWrapper>("Title"); }
+        }
         public ITextFieldWrapper SingleLineText
         {
             get { return GetField<TextFieldWrapper>("SingleLineText"); }
@@ -42,10 +47,10 @@ namespace Sc.Orm.Components.FortisExample.Models
     }
 
     [TemplateMapping("{A1BE42F9-C23A-4BD4-B998-B5CCF0F9EADA}", "InterfaceMap")]
-    public partial interface IPageWithChildren : IItemWrapper { }
+    public partial interface IPageWithChildren : IItemWrapper, IPage { }
 
     [TemplateMapping("{A1BE42F9-C23A-4BD4-B998-B5CCF0F9EADA}")]
-    public class PageWithChildren : ItemWrapper, IPageWithChildren
+    public class PageWithChildren : Page, IPageWithChildren
     {
         public PageWithChildren(Item item, ISpawnProvider spawnProvider)
             : base(item, spawnProvider)

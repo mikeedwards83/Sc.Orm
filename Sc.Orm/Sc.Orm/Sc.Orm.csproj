@@ -73,11 +73,20 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Sitecore.ContentSearch, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.ContentSearch.NoReferences.9.0.171219\lib\NET462\Sitecore.ContentSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.ContentSearch.Linq, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.ContentSearch.Linq.NoReferences.9.0.171219\lib\NET462\Sitecore.ContentSearch.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="Sitecore.Kernel, Version=11.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Kernel.NoReferences.9.0.171219\lib\NET462\Sitecore.Kernel.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Mvc, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Mvc.NoReferences.9.0.171219\lib\NET462\Sitecore.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Synthesis, Version=9.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Synthesis.Core.9.0.1\lib\net462\Synthesis.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
@@ -123,15 +132,22 @@
     <Compile Include="Components\FortisExample\FortisExampleController.cs" />
     <Compile Include="Components\FortisExample\ModelProvider.cs" />
     <Compile Include="Components\FortisExample\Models\FortisExampleIndexView.cs" />
+    <Compile Include="Components\FortisExample\Models\Navigation.cs" />
     <Compile Include="Components\FortisExample\Models\Page.cs" />
+    <Compile Include="Components\General\GeneralController.cs" />
     <Compile Include="Components\GlassExample\GlassExampleController.cs" />
     <Compile Include="Components\GlassExample\Models\GlassExampleIndexView.cs" />
+    <Compile Include="Components\GlassExample\Models\Navigation.cs" />
     <Compile Include="Components\GlassExample\Models\Page.cs" />
     <Compile Include="Components\SitecoreExample\Models\SitecoreExampleIndexView.cs" />
     <Compile Include="Components\SitecoreExample\SitecoreExampleController.cs" />
+    <Compile Include="Components\SynthesisExample\Models\SynthesisExampleIndexView.cs" />
+    <Compile Include="Components\SynthesisExample\Models\Synthesis.Model.cs" />
+    <Compile Include="Components\SynthesisExample\SynthesisExampleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mvc\HtmlHelperExtensions.cs" />
     <Compile Include="Pipelines\Initalize\MvcViewPathsProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -146,7 +162,19 @@
     <Content Include="Views\SitecoreExample\Index.cshtml" />
     <Content Include="App_Config\Include\Fortis.Config" />
     <Content Include="App_Config\Include\Pipelines.config" />
+    <Content Include="App_Config\Include\Synthesis\Synthesis.Startup.config" />
+    <Content Include="App_Config\Include\Synthesis\Synthesis.LocalConfig.config" />
+    <Content Include="App_Config\Include\Synthesis\Synthesis.ControlPanel.config" />
+    <Content Include="App_Config\Include\Synthesis\Synthesis.config" />
+    <Content Include="App_Config\Include\Synthesis\Synthesis.AutoRegenerate.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\SynthesisExample\Index.cshtml" />
+    <Content Include="Views\Shared\MVC Layout.cshtml" />
+    <Content Include="Views\GlassExample\Menu.cshtml" />
+    <Content Include="Views\General\Menu.cshtml" />
+    <Content Include="Views\SynthesisExample\Menu.cshtml" />
+    <Content Include="Views\SitecoreExample\Menu.cshtml" />
+    <Content Include="Views\FortisExample\Menu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

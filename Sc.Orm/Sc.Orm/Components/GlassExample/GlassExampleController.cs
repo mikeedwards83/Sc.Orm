@@ -110,5 +110,13 @@ namespace Sc.Orm.Components.GlassExample
 
             return View("Index", view);
         }
+
+        public ActionResult Menu()
+        {
+            var context = new MvcContext();
+            var model = context.SitecoreService.GetItem<Navigation>("/sitecore/content/home");
+
+            return View(model);
+        }
     }
 }

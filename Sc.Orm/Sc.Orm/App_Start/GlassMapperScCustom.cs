@@ -1,5 +1,6 @@
 #region GlassMapperScCustom generated code
 using Glass.Mapper.Configuration;
+using Glass.Mapper.Configuration.Attributes;
 using Glass.Mapper.IoC;
 using Glass.Mapper.Maps;
 using Glass.Mapper.Sc.IoC;
@@ -24,8 +25,8 @@ namespace Sc.Orm.App_Start
              * If you are using Attribute Configuration or automapping/on-demand mapping you don't need to do anything!
              * 
              */
-
-			return new IConfigurationLoader[]{};
+		    var loader = new AttributeConfigurationLoader("Sc.Orm");
+			return new IConfigurationLoader[]{loader};
 		}
 		public static void PostLoad(){
 			//Remove the comments to activate CodeFist

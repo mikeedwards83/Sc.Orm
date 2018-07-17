@@ -4,6 +4,7 @@ using Glass.Mapper.Sc.Fields;
 
 namespace Sc.Orm.Components.GlassExample.Models
 {
+    [SitecoreType(AutoMap = true)]
     public class Page
     {
         public virtual string SingleLineText { get; set; }
@@ -13,17 +14,20 @@ namespace Sc.Orm.Components.GlassExample.Models
 
     }
 
+    [SitecoreType(AutoMap = true)]
     public class PageWithChildren{
 
         [SitecoreChildren]
         public virtual IEnumerable<Child> Children { get; set; }
     }
 
+    [SitecoreType(AutoMap = true)]
     public class Child
     {
         
     }
 
+    [SitecoreType(AutoMap = true)]
     public class PageWithChildrenAndFields
     {
 
@@ -31,6 +35,7 @@ namespace Sc.Orm.Components.GlassExample.Models
         public virtual IEnumerable<ChildWithFields> Children { get; set; }
     }
 
+    [SitecoreType(AutoMap = true)]
     public class ChildWithFields
     {
         public virtual string SingleLineText { get; set; }
