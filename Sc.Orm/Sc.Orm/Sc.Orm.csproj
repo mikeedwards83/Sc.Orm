@@ -131,11 +131,13 @@
     <Compile Include="App_Start\GlassMapperScCustom.cs" />
     <Compile Include="Components\FortisExample\FortisExampleController.cs" />
     <Compile Include="Components\FortisExample\ModelProvider.cs" />
+    <Compile Include="Components\FortisExample\Models\BlogPost.cs" />
     <Compile Include="Components\FortisExample\Models\FortisExampleIndexView.cs" />
     <Compile Include="Components\FortisExample\Models\Navigation.cs" />
     <Compile Include="Components\FortisExample\Models\Page.cs" />
     <Compile Include="Components\General\GeneralController.cs" />
     <Compile Include="Components\GlassExample\GlassExampleController.cs" />
+    <Compile Include="Components\GlassExample\Models\BlogPost.cs" />
     <Compile Include="Components\GlassExample\Models\GlassExampleIndexView.cs" />
     <Compile Include="Components\GlassExample\Models\Navigation.cs" />
     <Compile Include="Components\GlassExample\Models\Page.cs" />
@@ -175,6 +177,11 @@
     <Content Include="Views\SynthesisExample\Menu.cshtml" />
     <Content Include="Views\SitecoreExample\Menu.cshtml" />
     <Content Include="Views\FortisExample\Menu.cshtml" />
+    <Content Include="Views\General\BlogPost.cshtml" />
+    <Content Include="Views\GlassExample\BlogPost.cshtml" />
+    <Content Include="Views\SitecoreExample\BlogPost.cshtml" />
+    <Content Include="Views\SynthesisExample\BlogPost.cshtml" />
+    <Content Include="Views\FortisExample\BlogPost.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

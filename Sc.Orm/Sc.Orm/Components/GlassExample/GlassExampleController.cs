@@ -118,5 +118,29 @@ namespace Sc.Orm.Components.GlassExample
 
             return View(model);
         }
+
+        public ActionResult BlogPost()
+        {
+            var context = new MvcContext();
+            var model = context.SitecoreService.GetItem<BlogPost>("/sitecore/content/home/blogpost");
+
+            return View(model);
+        }
+
+        public ActionResult Menu_Cached()
+        {
+            var context = new MvcContext();
+            var model = context.SitecoreService.GetItem<Navigation>("/sitecore/content/home",x=>x.CacheEnabled());
+
+            return View("Menu",model);
+        }
+
+        public ActionResult BlogPost_Cached()
+        {
+            var context = new MvcContext();
+            var model = context.SitecoreService.GetItem<BlogPost>("/sitecore/content/home/blogpost", x => x.CacheEnabled());
+
+            return View("BlogPost",model);
+        }
     }
 }

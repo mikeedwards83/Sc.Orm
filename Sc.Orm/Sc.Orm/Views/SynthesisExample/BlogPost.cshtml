@@ -1,0 +1,19 @@
+﻿@using Glass.Mapper.Sc.Web.Mvc
+@using Sitecore.Mvc
+@model Sc.Orm.Components.SynthesisExample.Models.UserDefined.IBlogPostItem
+
+<div container>
+    <h4>@Model.Title.RenderedValue</h4>
+
+    @Html.Raw(Model.Image.RenderedValue)
+
+    <div>
+        @Html.Raw(Model.Content.RenderedValue)
+
+    </div>
+    <p>
+        @Model.Author.RenderedValue
+        -
+        @Model.DateTime.RenderedValue
+    </p>
+</div>

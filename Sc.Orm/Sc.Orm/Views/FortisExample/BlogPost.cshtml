@@ -1,0 +1,19 @@
+﻿@using Glass.Mapper.Sc.Web.Mvc
+@using Sitecore.Mvc
+@model Sc.Orm.Components.FortisExample.Models.IBlogPost
+
+<div container>
+    <h4>@Model.Title.Render()</h4>
+
+    @Model.Image.Render()
+
+    <div>
+        @Model.Content.Render()
+
+    </div>
+    <p>
+        @Model.Author.Render()
+        -
+        @Model.DateTime.Render()
+    </p>
+</div>

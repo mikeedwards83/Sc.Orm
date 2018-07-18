@@ -106,5 +106,12 @@ namespace Sc.Orm.Components.SynthesisExample
 
             return View(item.As<INavigationItem>());
         }
+
+        public ActionResult BlogPost()
+        {
+            var item = Sitecore.Context.Database.GetItem("/sitecore/content/home/blogpost");
+
+            return View(item.As<IBlogPostItem>());
+        }
     }
 }

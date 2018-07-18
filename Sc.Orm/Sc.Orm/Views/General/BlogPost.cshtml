@@ -1,0 +1,25 @@
+﻿@using Glass.Mapper.Sc.Web.Mvc
+@using Sc.Orm.Mvc
+@using Sitecore.Mvc
+@model Sc.Orm.Components.GlassExample.Models.Navigation
+
+<h2>Sitecore</h2>
+
+@Html.TimedController("SitecoreExample", "BlogPost")
+
+<h2>Glass</h2>
+
+@Html.TimedController("GlassExample", "BlogPost")
+
+<h2>Fortis</h2>
+
+@Html.TimedController("FortisExample", "BlogPost")
+
+<h2>Synthesis</h2>
+
+@Html.TimedController("SynthesisExample", "BlogPost")
+
+
+<h2>Glass - Cached</h2>
+
+@Html.TimedController("GlassExample", "BlogPost_Cached")

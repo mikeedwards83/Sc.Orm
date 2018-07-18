@@ -117,5 +117,14 @@ namespace Sc.Orm.Components.FortisExample
             var model =factory.Select<INavigation>("/sitecore/content/home");
             return View(model);
         }
+
+
+        public ActionResult BlogPost()
+        {
+            var factory = Global.FortisFactory;
+
+            var model = factory.Select<IBlogPost>("/sitecore/content/home/blogpost");
+            return View(model);
+        }
     }
 }

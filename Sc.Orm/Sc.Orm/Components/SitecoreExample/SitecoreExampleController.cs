@@ -104,5 +104,11 @@ namespace Sc.Orm.Components.SitecoreExample
 
             return View(item);
         }
+        public ActionResult BlogPost()
+        {
+            var item = Sitecore.Context.Database.GetItem("/sitecore/content/home/blogpost");
+
+            return View(item);
+        }
     }
 }

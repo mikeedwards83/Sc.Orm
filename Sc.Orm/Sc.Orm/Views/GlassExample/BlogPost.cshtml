@@ -1,0 +1,17 @@
+﻿@using Glass.Mapper.Sc.Web.Mvc
+@model Sc.Orm.Components.GlassExample.Models.BlogPost
+
+
+<div container>
+    <h4>@Html.Glass().Editable(Model, x => x.Title)</h4>
+
+    @Html.Glass().RenderImage(Model, x => x.Image, isEditable: true)
+
+    <div>
+        @Html.Glass().Editable(x => x.Content)
+    </div>
+
+    <p>
+        @Html.Glass().Editable(x => x.Author) - @Html.Glass().Editable(x => x.DateTime)
+    </p>
+</div>

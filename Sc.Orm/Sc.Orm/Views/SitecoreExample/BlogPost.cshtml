@@ -1,0 +1,20 @@
+﻿@using Glass.Mapper.Sc.Web.Mvc
+@using Sitecore.Mvc
+@model Sitecore.Data.Items.Item
+
+<div container>
+    <h4>@Html.Sitecore().Field("Title", Model)</h4>
+
+    @Html.Sitecore().Field("Image", Model)
+
+    <div>
+        @Html.Sitecore().Field("Content", Model)
+    </div>
+    <p>
+        @Html.Sitecore().Field("Author", Model)
+        
+        -
+        
+        @Html.Sitecore().Field("DateTime", Model)
+    </p>
+</div>

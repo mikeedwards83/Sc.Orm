@@ -13,5 +13,10 @@ namespace Sc.Orm.Components.General
 
             return View();
         }
+        public ActionResult BlogPost()
+        {
+
+            return View();
+        }
     }
 }
